@@ -13,7 +13,7 @@ import com.javaex.vo.GuestBookVo;
 
 @Controller
 public class GuestBookController {
-	
+	//리스트
 	@RequestMapping(value="/addList", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
 		System.out.println("addList");
@@ -24,6 +24,7 @@ public class GuestBookController {
 		model.addAttribute("gList", gList);
 		return "/WEB-INF/views/addList.jsp";
 	}
+	//등록
 	@RequestMapping(value="/add", method= {RequestMethod.POST, RequestMethod.GET})
 	public String add(@RequestParam ("name") String name,
 					@RequestParam ("password") String password,
@@ -34,12 +35,13 @@ public class GuestBookController {
 		System.out.println("add");
 		return "redirect:/addList";
 	}
+	//삭제폼
 	@RequestMapping(value="/deleteForm", method= {RequestMethod.POST, RequestMethod.GET})
 	public String deleteForm() {
 		System.out.println("deleteForm");
 		return"/WEB-INF/views/deleteForm.jsp";
 	}
-	
+	//삭제
 	@RequestMapping(value="/delete", method = {RequestMethod.POST, RequestMethod.GET})
 	public String delete(@RequestParam("no") int no,
 						@RequestParam("password") String password) {
